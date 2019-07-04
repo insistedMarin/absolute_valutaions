@@ -97,7 +97,7 @@ class _LoginState extends State<Login> {
                       ]
 
                   ),
-                  transform: Matrix4.rotationZ(.4),
+//                  transform: Matrix4.rotationZ(.4),
                   alignment: Alignment.center,
                   child: Text("Bien sur!",style: TextStyle(
                     color: Colors.white,
@@ -124,7 +124,7 @@ class _LoginState extends State<Login> {
                       ]
 
                   ),
-                  transform: Matrix4.rotationZ(0.4),
+//                  transform: Matrix4.rotationZ(0.4),
                   alignment: Alignment.center,
                   child: Text(r"D'accord",style: TextStyle(
                     color: Colors.white,
@@ -151,7 +151,7 @@ class _LoginState extends State<Login> {
                       ]
 
                   ),
-                  transform: Matrix4.rotationZ(0.4),
+//                  transform: Matrix4.rotationZ(0.4),
                   alignment: Alignment.center,
                   child: Text("Pourquoi?",style: TextStyle(
                     color: Colors.white,
