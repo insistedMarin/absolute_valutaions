@@ -16,8 +16,11 @@ class _STLoanState extends State<STLoan> {
   TextEditingController _holdingLiabilitiesForSale =new TextEditingController();
   TextEditingController _NonCurrentLiabilitiesWithinYear=new TextEditingController();
 
-  GlobalKey _formkey=new GlobalKey();
+  final _formkey=new GlobalKey<FormState>();
   STdebtCapital_calc STDCaptial=new STdebtCapital_calc();
+  void reset(){
+    _formkey.currentState.reset();
+  }
 
 
   @override
@@ -30,24 +33,24 @@ class _STLoanState extends State<STLoan> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-//      appBar: AppBar(
-//        // Here we take the value from the MyHomePage object that was created by
-//        // the App.build method, and use it to set our appbar title.
-//        title: Text("Value Absolute",style: TextStyle(
-//            fontFamily: "ShadowsIntoLight",
-//            fontSize: 30
-//        ),),
-//      ),
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text("上一页"),
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child:Center(
             child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("短期借款",style: TextStyle(
-                      fontFamily: "ZHONG1",
-                      fontSize: 40.0,
-                      color: Colors.lightGreen
-                  ),),
+                  Padding(
+                    padding: EdgeInsets.only(top: 40.0),
+                    child:Text("短期借款",style: TextStyle(
+                        fontFamily: "ZHONG1",
+                        fontSize: 40.0,
+                        color: Colors.red
+                    ),),),
                   Form(
                       key: _formkey,
                       autovalidate: true,
@@ -129,40 +132,83 @@ class _STLoanState extends State<STLoan> {
                               },
                             ),])),
                   Padding(
-                    padding: EdgeInsets.only(top: 30),
-                    child:
-
-                    RaisedButton(
-                      splashColor: Colors.black,
-                      color: Colors.white,
-                      padding: EdgeInsets.all(0),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: RadialGradient(
-                              colors: [Colors.orange,Colors.purple],
-                              radius: 1.7,
-                              center: Alignment.topLeft),
+                    padding: const EdgeInsets.symmetric(horizontal: 28.0,vertical: 35.0),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: RaisedButton(
+                            padding:EdgeInsets.all(10.0),
+                            onPressed: (){reset();},
+                            child: Text('重置',style: TextStyle(
+                              fontSize: 25.0,
+                              fontFamily: "ZHONG1",
+                            ),),
+                            color: Theme.of(context).primaryColor,
+                            textColor: Colors.white,
+                          ),
+                          flex: 5,
                         ),
-                        child: Text("下一页",style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18
-                        ),),
-                      ),
-//                                  textColor: Colors.white,
-                      onPressed: (){
-                        STDCaptial.getSTloan(_shotTimeLoan.text,_interestPayable.text,_shortTimeBondsPayable.text,_tradingFinancialLiabilities.text,_holdingLiabilitiesForSale.text,_NonCurrentLiabilitiesWithinYear.text);
-                        if(STDCaptial.isNonZero())
-                        {
-
-                          Navigator.pushNamed(context, "LTload_page");
-                        }
-                      },
+                        Spacer(
+                          flex: 2,
+                        ),
+                        Expanded(
+                          child: RaisedButton(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text("提交",style: TextStyle(
+                              fontSize: 25.0,
+                              fontFamily: "ZHONG1",
+                            ),),
+                            color: Theme.of(context).primaryColor,
+                            textColor: Colors.white,
+                            onPressed: (){
+//                              STDCaptial.getSTloan(_shortTimeLoan.text, _bondsPayable.text, _longTimePayable.text, _interestExpense.text, _incomeTax.text, _totalProfit.text);
+//                              if(STDCaptial.isNonZero())
+//                              {
+//                                STDCaptial.LTdebtCapital();
+                                Navigator.pushNamed(context, "LTloan_page");
+//                              }
+                            },
+                          ),
+                          flex: 5,
+                        )
+                      ],
                     ),
-
-                  ),
+                  )
+//                  Padding(
+//                    padding: EdgeInsets.only(top: 30),
+//                    child:
+//
+//                    RaisedButton(
+//                      splashColor: Colors.black,
+//                      color: Colors.white,
+//                      padding: EdgeInsets.all(0),
+//                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+//                      child: Container(
+//                        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+//                        decoration: BoxDecoration(
+//                          borderRadius: BorderRadius.circular(30),
+//                          gradient: RadialGradient(
+//                              colors: [Colors.orange,Colors.purple],
+//                              radius: 1.7,
+//                              center: Alignment.topLeft),
+//                        ),
+//                        child: Text("下一页",style: TextStyle(
+//                            color: Colors.white,
+//                            fontSize: 18
+//                        ),),
+//                      ),
+////                                  textColor: Colors.white,
+//                      onPressed: (){
+//                        STDCaptial.getSTloan(_shotTimeLoan.text,_interestPayable.text,_shortTimeBondsPayable.text,_tradingFinancialLiabilities.text,_holdingLiabilitiesForSale.text,_NonCurrentLiabilitiesWithinYear.text);
+//                        if(STDCaptial.isNonZero())
+//                        {
+//
+//                          Navigator.pushNamed(context, "LTloan_page");
+//                        }
+//                      },
+//                    ),
+//
+//                  ),
                 ]
             )
         ),

@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:managementdemo/Computation/LTloan_calc.dart';
 
-class LTLoan extends StatefulWidget {
+class FreeCaF extends StatefulWidget {
   @override
-  _LTLoanState createState() => new _LTLoanState();
+  _FreeCaFState createState() => new _FreeCaFState();
 }
 
-class _LTLoanState extends State<LTLoan>{
+class _FreeCaFState extends State<FreeCaF>{
 
-  TextEditingController _longTimeLoan =new TextEditingController();
-  TextEditingController _bondsPayable =new TextEditingController();
-  TextEditingController _longTimePayable =new TextEditingController();
-  TextEditingController _interestExpense =new TextEditingController();
-  TextEditingController _incomeTax =new TextEditingController();
-  TextEditingController _totalProfit=new TextEditingController();
+  TextEditingController _netCashFlowInOperating =new TextEditingController();
+  TextEditingController _impairmentOfAssets =new TextEditingController();
+  TextEditingController _depreciationOfFixedAssets =new TextEditingController();
+  TextEditingController _amortizationOfIntangibleAssets  =new TextEditingController();
+  TextEditingController _amortOfLTAmortizationExpense =new TextEditingController();
+  TextEditingController _lossOfAssets=new TextEditingController();
 
   final _formkey=new GlobalKey<FormState>();
-  LTdebtCapital_calc LTDCaptial = new LTdebtCapital_calc();
 
   void reset(){
     _formkey.currentState.reset();
@@ -26,23 +24,23 @@ class _LTLoanState extends State<LTLoan>{
 
     return Scaffold(
         appBar: AppBar(
-      // Here we take the value from the MyHomePage object that was created by
-      // the App.build method, and use it to set our appbar title.
-      title:  Text("上一页"),
-    ),
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title:  Text("上一页"),
+        ),
         body: SingleChildScrollView(
             padding: EdgeInsets.all(16.0),
             child:Center(
               child:Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                    padding: EdgeInsets.only(top: 40.0),
-                    child:Text("长期借款",style: TextStyle(
-                        fontFamily: "ZHONG1",
-                        fontSize: 40.0,
-                        color: Colors.red
-                    ),),),
+                      padding: EdgeInsets.only(top: 40.0),
+                      child:Text("自由现金流",style: TextStyle(
+                          fontFamily: "ZHONG1",
+                          fontSize: 40.0,
+                          color: Colors.red
+                      ),),),
                     Form(
                       key: _formkey,
                       autovalidate: true,
@@ -52,9 +50,9 @@ class _LTLoanState extends State<LTLoan>{
                         children: <Widget>[
                           TextFormField(
 //                            autofocus: true,
-                            controller: _longTimeLoan,
+                            controller: _netCashFlowInOperating ,
                             decoration: InputDecoration(
-                              labelText: "长期借款",
+                              labelText: "经营产生的现金流量净额",
                               icon: Icon(Icons.stars),
                             ),
                             validator: (v){
@@ -64,9 +62,9 @@ class _LTLoanState extends State<LTLoan>{
                           ),
                           TextFormField(
 //                            autofocus: true,
-                            controller: _bondsPayable,
+                            controller: _impairmentOfAssets,
                             decoration: InputDecoration(
-                              labelText: "应付债券",
+                              labelText: "资产减值准备",
                               icon: Icon(Icons.stars),
                             ),
                             validator: (v){
@@ -76,9 +74,9 @@ class _LTLoanState extends State<LTLoan>{
                           ),
                           TextFormField(
 //                            autofocus: true,
-                            controller: _longTimePayable,
+                            controller: _depreciationOfFixedAssets,
                             decoration: InputDecoration(
-                              labelText: "长期应付款",
+                              labelText: "固定资产折旧",
                               icon: Icon(Icons.stars),
                             ),
                             validator: (v){
@@ -88,9 +86,9 @@ class _LTLoanState extends State<LTLoan>{
                           ),
                           TextFormField(
 //                            autofocus: true,
-                            controller: _interestExpense,
+                            controller: _amortizationOfIntangibleAssets,
                             decoration: InputDecoration(
-                              labelText: "利息支出总额",
+                              labelText: "无形资产摊销",
                               icon: Icon(Icons.stars),
                             ),
                             validator: (v){
@@ -100,9 +98,9 @@ class _LTLoanState extends State<LTLoan>{
                           ),
                           TextFormField(
 //                            autofocus: true,
-                            controller: _incomeTax,
+                            controller: _amortOfLTAmortizationExpense,
                             decoration: InputDecoration(
-                              labelText: "所得税",
+                              labelText: "长期待摊销资产摊销",
                               icon: Icon(Icons.stars),
                             ),
                             validator: (v){
@@ -112,9 +110,9 @@ class _LTLoanState extends State<LTLoan>{
                           ),
                           TextFormField(
 //                            autofocus: true,
-                            controller: _totalProfit,
+                            controller: _lossOfAssets,
                             decoration: InputDecoration(
-                              labelText: "利润总额",
+                              labelText: "固定资产长期资产和其它资产损失",
                               icon: Icon(Icons.stars),
                             ),
                             validator: (v){
@@ -128,14 +126,14 @@ class _LTLoanState extends State<LTLoan>{
                               children: <Widget>[
                                 Expanded(
                                   child: RaisedButton(
-                                      padding:EdgeInsets.all(10.0),
-                                      onPressed: (){reset();},
-                                      child: Text('重置',style: TextStyle(
-                                        fontSize: 25.0,
-                                        fontFamily: "ZHONG1",
-                                      ),),
-                                      color: Theme.of(context).primaryColor,
-                                      textColor: Colors.white,
+                                    padding:EdgeInsets.all(10.0),
+                                    onPressed: (){reset();},
+                                    child: Text('重置',style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontFamily: "ZHONG1",
+                                    ),),
+                                    color: Theme.of(context).primaryColor,
+                                    textColor: Colors.white,
                                   ),
                                   flex: 5,
                                 ),
@@ -152,12 +150,7 @@ class _LTLoanState extends State<LTLoan>{
                                     color: Theme.of(context).primaryColor,
                                     textColor: Colors.white,
                                     onPressed: (){
-//                                      LTDCaptial.getLTloan(_longTimeLoan.text, _bondsPayable.text, _longTimePayable.text, _interestExpense.text, _incomeTax.text, _totalProfit.text);
-//                                      if(LTDCaptial.isNonZero())
-//                                      {
-//                                        LTDCaptial.LTdebtCapital();
-                                        Navigator.pushNamed(context, "freecashflow_page");
-//                                      }
+                                        Navigator.pushNamed(context,"financialasset_page");
                                     },
                                   ),
                                   flex: 5,
