@@ -4,6 +4,9 @@ import 'package:managementdemo/Pages/bottombar_page.dart';
 import 'package:managementdemo/Pages/STloan_page.dart';
 import 'package:managementdemo/Pages/LTloan_page.dart';
 import 'package:managementdemo/Pages/login_page.dart';
+import 'package:managementdemo/Pages/freecashflow_page.dart';
+import 'package:managementdemo/Pages/financialasset_page.dart';
+import 'package:managementdemo/Pages/growthrate_page.dart';
 
 //import 'dart:async';
 
@@ -27,11 +30,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: 'Value'),
-      routes: {'STloan__page': (context) => STLoan(),
+      home: MyHomePage(),
+      routes: {'STloan_page': (context) => STLoan(),
                 'LTloan_page':(context)=>LTLoan(),
                 'login_page':(context)=>Login(),
-                'bottombar_page':(context)=>MyHomePage()},
+                'bottombar_page':(context)=>MyHomePage(),
+                'freecashflow_page':(context)=>FreeCaF(),
+                'financialasset_page':(context)=>finAsset(),
+                'growthrate_page':(context)=>growthrate()},
     );
   }
 }
