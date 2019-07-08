@@ -1,12 +1,13 @@
 import 'package:managementdemo/Computation/computation.dart';
 class  LTdebtCapital_calc{
-  double longTimeLoan;
-  double bondsPayable;
-  double longTimePayable;
+  double longTimeLoan; //长期借款
+  double bondsPayable; //应付债券
+  double longTimePayable; //长期应付款
 
-  double interestExpense;
-  double incomeTax;
-  double totalProfit;
+  double interestExpense; //利息支出总额
+  double incomeTax; //所得税
+  double totalProfit; //利润总额
+
   void getLTloan(String a,String b,String c,String d,String e,String f){
     longTimeLoan=double.parse(a);
     bondsPayable=double.parse(b);
