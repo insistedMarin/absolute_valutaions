@@ -58,12 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //          ),
 //          ),
         leading: Builder(builder: (context){
-          return IconButton(
-            icon: Icon(Icons.dashboard,color: Colors.white,),
-            onPressed: (){
-              Scaffold.of(context).openDrawer();
-            },
-          );
+          return Icon(Icons.translate);
         }),
 //        actions: <Widget>[
 //          IconButton(icon: Icon(Icons.share),onPressed: (){},)
