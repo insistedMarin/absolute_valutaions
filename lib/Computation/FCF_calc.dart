@@ -8,8 +8,17 @@ double amortizationOfIntangibleAssets; //无形资产摊销
 double longTermAmortizationOfAmortizedAssets; //长期待摊销费用摊销
 double lossOfOtherAssets; //固定资产长期资产和其他资产损失
 
-void calculate(){
-  Computaiton.LTDCaptial=Computaiton.LTDCaptial-1;
- print(Computaiton.LTDCaptial);
-}}
+void getFCF(String a,String b,String c,String d,String e,String f){
+  operatingCashFlow=double.parse(a);
+  impairmentOfAssets=double.parse(b);
+  depreciationOfFixedAssets=double.parse(c);
+  amortizationOfIntangibleAssets=double.parse(d);
+  longTermAmortizationOfAmortizedAssets=double.parse(e);
+  lossOfOtherAssets=double.parse(f);
+}
+
+void FCF_calculate(){
+  Computaiton.FCF = operatingCashFlow - impairmentOfAssets - depreciationOfFixedAssets - amortizationOfIntangibleAssets - longTermAmortizationOfAmortizedAssets - lossOfOtherAssets;
+  }
+}
 

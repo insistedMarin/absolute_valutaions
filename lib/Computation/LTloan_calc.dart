@@ -1,5 +1,5 @@
 import 'package:managementdemo/Computation/computation.dart';
-class  LTdebtCapital_calc{
+class  LTdebtCapital{
   double longTimeLoan; //长期借款
   double bondsPayable; //应付债券
   double longTimePayable; //长期应付款
@@ -25,11 +25,14 @@ class  LTdebtCapital_calc{
     return false;
   }
 
-  void LTdebtCapital(){
+  void LTdebtCapital_Calc(){
     Computaiton.LTDCaptial= longTimeLoan + bondsPayable + longTimePayable;
-    print(Computaiton.LTDCaptial);
   }
-  double incomeTaxRate(){
-    return incomeTax/totalProfit;
+  void incomeTaxRate_Calc(){
+    Computaiton.incomeTaxRate = incomeTax/totalProfit;
+  }
+
+  void interestExpense_Trans(){
+    Computaiton.interestExpense = interestExpense;
   }
 }

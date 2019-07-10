@@ -16,7 +16,7 @@ class _LTLoanState extends State<LTLoan>{
   TextEditingController _totalProfit=new TextEditingController();
 
   final _formkey=new GlobalKey<FormState>();
-  LTdebtCapital_calc LTDCaptial = new LTdebtCapital_calc();
+  LTdebtCapital LTDCaptial = new LTdebtCapital();
 
   void reset(){
     _formkey.currentState.reset();

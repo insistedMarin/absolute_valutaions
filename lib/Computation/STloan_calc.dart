@@ -1,6 +1,6 @@
 import 'package:managementdemo/Computation/computation.dart';
 
-class  STdebtCapital_calc{
+class  STdebtCapital{
 
   double shotTimeLoan; //短期借款
   double interestPayable; //应付利息
@@ -25,7 +25,7 @@ class  STdebtCapital_calc{
       }
     return false;
   }
-  void STdebtCapital(){
+  void STdebtCapital_calc(){
     Computaiton.STDCapital=shotTimeLoan + interestPayable + shortTimeBondsPayable + tradingFinancialLiabilitiesz + holdingLiabilitiesForSale + nonCurrentLiabilitiesWithinYear;
   }
 }
