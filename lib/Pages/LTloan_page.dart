@@ -152,11 +152,16 @@ class _LTLoanState extends State<LTLoan>{
                                     color: Theme.of(context).primaryColor,
                                     textColor: Colors.white,
                                     onPressed: (){
-//                                      LTDCaptial.getLTloan(_longTimeLoan.text, _bondsPayable.text, _longTimePayable.text, _interestExpense.text, _incomeTax.text, _totalProfit.text);
+
+                                      if(LTDCaptial.getLTloan(_longTimeLoan.text, _bondsPayable.text, _longTimePayable.text, _interestExpense.text, _incomeTax.text, _totalProfit.text))
+                                        {
+                                          LTDCaptial.LTdebtCapital_Calc();
+                                          Navigator.pushNamed(context, "freecashflow_page");
+                                        }
 //                                      if(LTDCaptial.isNonZero())
 //                                      {
 //                                        LTDCaptial.LTdebtCapital();
-                                        Navigator.pushNamed(context, "freecashflow_page");
+
 //                                      }
                                     },
                                   ),

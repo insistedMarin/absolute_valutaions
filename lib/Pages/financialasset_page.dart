@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:managementdemo/Computation/FinancialAsset_calc.dart';
 class finAsset extends StatefulWidget {
   @override
   _finAssetState createState() => new _finAssetState();
@@ -15,7 +15,7 @@ class _finAssetState extends State<finAsset>{
 
 
   final _formkey=new GlobalKey<FormState>();
-
+  financialAsset_calc financialAsset = new financialAsset_calc();
   void reset(){
     _formkey.currentState.reset();
   }
@@ -138,7 +138,12 @@ class _finAssetState extends State<finAsset>{
                                     color: Theme.of(context).primaryColor,
                                     textColor: Colors.white,
                                     onPressed: (){
-                                      Navigator.pushNamed(context, "growthrate_page");
+                                      if(financialAsset.getFinancialAsset(_financialAsset.text, _LTStockInvest.text, _lessOfStocksholderRights.text, _countOfStocksholderRights.text, _generalCapital.text))
+                                        {
+                                        financialAsset.financialAsset_Calc();
+                                        Navigator.pushNamed(context, "growthrate_page");
+                                        }
+
                                     },
                                   ),
                                   flex: 5,

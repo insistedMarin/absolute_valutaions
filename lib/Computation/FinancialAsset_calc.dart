@@ -7,12 +7,17 @@ class financialAsset_calc{
   double totalShareholdersEquity; //股东权益合计
   double totalShareCapital; //总股本
 
-  void getFinancialAsset(String a,String b,String c,String d,String e){
+  bool getFinancialAsset(String a,String b,String c,String d,String e){
+    if(a.length * b.length * c.length * d.length * e.length == 0 )
+    {
+      return false;
+    }
     monetaryAssets=double.parse(a);
     longTermEquityInvestment=double.parse(b);
     minorityShareholdersEquity=double.parse(c);
     totalShareholdersEquity=double.parse(d);
     totalShareCapital=double.parse(e);
+    return true;
   }
 
   void financialAsset_Transfer()
@@ -23,8 +28,9 @@ class financialAsset_calc{
     Computaiton.longTermEquityInvestment = longTermEquityInvestment; //传递长期股权投资
   }
 
-  void minorityShareholderRatio_Calc() //计算少数股东比例
+  void financialAsset_Calc() //计算少数股东比例
   {
+    financialAsset_Transfer();
     Computaiton.minorityShareholderRatio = minorityShareholdersEquity/totalShareholdersEquity;
   }
 }

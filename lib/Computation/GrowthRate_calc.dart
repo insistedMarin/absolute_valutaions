@@ -6,11 +6,16 @@ class growthRate_calc{
   String stockName; //股票名称
   double equityCapitalCostRate; //股权资本成本率
 
-  void getGrowthRate(String a,String b,String c,String d){
+  bool getGrowthRate(String a,String b,String c,String d){
+    if(a.length * b.length * c.length * d.length == 0 )
+    {
+      return false;
+    }
     firstStageGrowthRate=double.parse(a);
     secondStageGrowthRate=double.parse(b);
     stockName=c;
     equityCapitalCostRate=double.parse(d);
+    return true;
   }
 
   void growthRate_Trans()

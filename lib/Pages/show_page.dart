@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:managementdemo/Computation/computation.dart';
 
 class showresult extends StatelessWidget{
   @override
@@ -35,7 +36,7 @@ class showresult extends StatelessWidget{
             ]
           ),
                           Padding(padding: EdgeInsets.only(top: 25),
-                            child:Text("replace by your result",style: TextStyle(fontSize: 25,fontFamily: "Lobster",color: Colors.red),
+                            child:Text(Computaiton.stockPrice.toStringAsFixed(2),style: TextStyle(fontSize: 25,fontFamily: "Lobster",color: Colors.red),
                     overflow: TextOverflow.visible,)
                           )
                   ],
@@ -58,7 +59,7 @@ class showresult extends StatelessWidget{
                         ]
                     ),
                     Padding(padding: EdgeInsets.only(top: 25),
-                    child:Text("replace by your result",style: TextStyle(fontSize: 25,fontFamily: "Lobster",color: Colors.red),
+                    child:Text(Computaiton.wacc_percent,style: TextStyle(fontSize: 25,fontFamily: "Lobster",color: Colors.red),
                     overflow: TextOverflow.visible,)
                     )
                   ],

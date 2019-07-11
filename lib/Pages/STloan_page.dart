@@ -9,7 +9,7 @@ class STLoan extends StatefulWidget {
 
 class _STLoanState extends State<STLoan> {
 
-  TextEditingController _shotTimeLoan =new TextEditingController();
+  TextEditingController _shortTimeLoan =new TextEditingController();
   TextEditingController _interestPayable =new TextEditingController();
   TextEditingController _shortTimeBondsPayable =new TextEditingController();
   TextEditingController _tradingFinancialLiabilities =new TextEditingController();
@@ -61,7 +61,7 @@ class _STLoanState extends State<STLoan> {
 //                        Text("短期债务",textScaleFactor: 2.5,),
                             TextFormField(
 //                              autofocus: true,
-                              controller: _shotTimeLoan,
+                              controller: _shortTimeLoan,
                               decoration: InputDecoration(
                                 labelText: "短期借贷",
                                 icon: Icon(Icons.stars),
@@ -161,12 +161,11 @@ class _STLoanState extends State<STLoan> {
                             color: Theme.of(context).primaryColor,
                             textColor: Colors.white,
                             onPressed: (){
-//                              STDCaptial.getSTloan(_shortTimeLoan.text, _bondsPayable.text, _longTimePayable.text, _interestExpense.text, _incomeTax.text, _totalProfit.text);
-//                              if(STDCaptial.isNonZero())
-//                              {
-//                                STDCaptial.LTdebtCapital();
-                                Navigator.pushNamed(context, "LTloan_page");
-//                              }
+                                if(STDCaptial.getSTloan(_shortTimeLoan.text, _interestPayable.text, _shortTimeBondsPayable.text, _tradingFinancialLiabilities.text, _holdingLiabilitiesForSale.text, _NonCurrentLiabilitiesWithinYear.text))
+                                  {
+                                    STDCaptial.STdebtCapital_calc();
+                                    Navigator.pushNamed(context, "LTloan_page");
+                                  }
                             },
                           ),
                           flex: 5,

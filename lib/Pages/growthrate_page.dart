@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:managementdemo/Computation/GrowthRate_calc.dart';
+import 'package:managementdemo/Computation/computation.dart';
 class growthrate extends StatefulWidget {
   @override
   _growthrateState createState() => new _growthrateState();
@@ -15,6 +16,7 @@ class _growthrateState extends State<growthrate>{
 
 
   final _formkey=new GlobalKey<FormState>();
+  growthRate_calc growthRate = new growthRate_calc();
 
   void reset(){
     _formkey.currentState.reset();
@@ -126,7 +128,44 @@ class _growthrateState extends State<growthrate>{
                                     color: Theme.of(context).primaryColor,
                                     textColor: Colors.white,
                                     onPressed: (){
-                                      Navigator.pushNamed(context, "show_page");
+                                      if(growthRate.getGrowthRate(_firstPartGrowthRate.text, _secondPartGrowthRate.text, _StockAddress.text, _equityCapitalCost.text))
+                                        {
+                                          growthRate.growthRate_Trans();
+                                          Computaiton.WACC_calc();
+                                          if(Computaiton.wacc <=  double.parse(_secondPartGrowthRate.text))
+                                            {
+                                              showDialog<Null>(
+                                                context: context,
+                                                barrierDismissible: false,
+                                                builder: (BuildContext context) {
+                                                  return new AlertDialog(
+                                                    title: new Text('G2过大'),
+                                                    content: new SingleChildScrollView(
+                                                      child: new ListBody(
+                                                        children: <Widget>[
+                                                          new Text('第二阶段增长率不能大于WACC,当前WACC为 ' + Computaiton.wacc_percent,overflow: TextOverflow.visible,),
+//                                                          new Text('内容 2'),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    actions: <Widget>[
+                                                      new FlatButton(
+                                                        child: new Text('确定'),
+                                                        onPressed: () {
+                                                          Navigator.of(context).pop();
+                                                        },
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ).then((val) {
+                                                print(val);
+                                              });
+                                              return 1;
+                                            }
+                                          Computaiton.stockPrice_calc();
+                                          Navigator.pushNamed(context, "show_page");
+                                        }
                                     },
                                   ),
                                   flex: 5,

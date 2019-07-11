@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:managementdemo/Computation/FCF_calc.dart';
 
 class FreeCaF extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class _FreeCaFState extends State<FreeCaF>{
   TextEditingController _lossOfAssets=new TextEditingController();
 
   final _formkey=new GlobalKey<FormState>();
+  FCF_calc FCF = new FCF_calc();
 
   void reset(){
     _formkey.currentState.reset();
@@ -150,7 +152,12 @@ class _FreeCaFState extends State<FreeCaF>{
                                     color: Theme.of(context).primaryColor,
                                     textColor: Colors.white,
                                     onPressed: (){
-                                        Navigator.pushNamed(context,"financialasset_page");
+                                        if(FCF.getFCF(_netCashFlowInOperating.text, _impairmentOfAssets.text, _depreciationOfFixedAssets.text, _amortizationOfIntangibleAssets.text, _amortOfLTAmortizationExpense.text, _lossOfAssets.text))
+                                        {
+                                          FCF.freeCashFlow_calc();
+                                          Navigator.pushNamed(context,"financialasset_page");
+                                        }
+
                                     },
                                   ),
                                   flex: 5,

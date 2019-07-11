@@ -9,22 +9,26 @@ class  STdebtCapital{
   double holdingLiabilitiesForSale; //划分为持有待售负债
   double nonCurrentLiabilitiesWithinYear; //一年内到期的非流动负债
 
-  void getSTloan(String a,String b,String c,String d,String e,String f){
+  bool getSTloan(String a,String b,String c,String d,String e,String f){
+    if(a.length * b.length * c.length * d.length * e.length * f.length == 0 )
+      {
+        return false;
+      }
     shotTimeLoan=double.parse(a);
     interestPayable=double.parse(b);
     shortTimeBondsPayable=double.parse(c);
     tradingFinancialLiabilitiesz=double.parse(d);
     holdingLiabilitiesForSale=double.parse(e);
     nonCurrentLiabilitiesWithinYear=double.parse(f);
+//    print("shotTimeLoan = " + shotTimeLoan.toString());
+//    print("shotTimeLoan = " + shotTimeLoan.toString());
+//    print("shotTimeLoan = " + shotTimeLoan.toString());
+//    print("shotTimeLoan = " + shotTimeLoan.toString());
+//    print("shotTimeLoan = " + shotTimeLoan.toString());
+//    print("shotTimeLoan = " + shotTimeLoan.toString());
+    return true;
   }
-  bool isNonZero()
-  {
-    if(shotTimeLoan*interestPayable*shortTimeBondsPayable*tradingFinancialLiabilitiesz*holdingLiabilitiesForSale*nonCurrentLiabilitiesWithinYear != 0)
-      {
-        return true;
-      }
-    return false;
-  }
+
   void STdebtCapital_calc(){
     Computaiton.STDCapital=shotTimeLoan + interestPayable + shortTimeBondsPayable + tradingFinancialLiabilitiesz + holdingLiabilitiesForSale + nonCurrentLiabilitiesWithinYear;
   }

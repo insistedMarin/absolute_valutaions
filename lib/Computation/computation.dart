@@ -17,6 +17,7 @@ class Computaiton{
   static double debtCapitalCostRate; //债务资本成本率
   static double debtCapital; //债务资本
   static double wacc; //WACC
+  static String wacc_percent; //WACC百分比
   static double firstStageFreeCashFlowDiscountValue; //第一阶段现金流贴现值
   static double secondStageFreeCashFlowDiscountValue; //第二阶段现金流贴现值
   static double freeCashFlowPresentValue; //自由现金流现值
@@ -26,7 +27,7 @@ class Computaiton{
 
   static double V4;
 
-  double debtCapitalCostRate_calc()//计算债务资本成本率
+  static double debtCapitalCostRate_calc()//计算债务资本成本率
   {
     if(interestExpense == 0)
       {
@@ -39,12 +40,12 @@ class Computaiton{
     return debtCapitalCostRate;
   }
 
-  double debtCapital_calc()//计算债务资本
+  static double debtCapital_calc()//计算债务资本
   {
     debtCapital = STDCapital + LTDCaptial;
   }
 
-  double WACC_calc()//计算WACC
+  static double WACC_calc()//计算WACC
   {
     debtCapital_calc();
     debtCapitalCostRate_calc();
@@ -53,12 +54,13 @@ class Computaiton{
     double equityRatio = totalShareholdersEquity / totalCapital; //股权比例
     debtCapitalCostRate_calc(); //债务资本成本率
     wacc = debtCapitalCostRate * debtRatio * (1 - incomeTaxRate) + equityCapitalCostRate * equityRatio;
+    wacc_percent = (wacc * 100).toStringAsFixed(2) + "%";
     return wacc;
   }
 
-  double firstStageFreeCashFlowDiscountValue_calc()//计算第一阶段自由现金流贴现值
+  static double firstStageFreeCashFlowDiscountValue_calc()//计算第一阶段自由现金流贴现值
   {
-    WACC_calc();
+    //WACC_calc();
     double V, V1, V2, V3;
     V = FCF * (1 + firstStageGrowthRate) / (1 + wacc);
     V1 = V * (1 + firstStageGrowthRate) / (1 + wacc);
@@ -69,7 +71,7 @@ class Computaiton{
     return firstStageFreeCashFlowDiscountValue;
   }
 
-  double secondStageFreeCashFlowDiscountValue_calc()//计算第二阶段自由现金流贴现值
+  static double secondStageFreeCashFlowDiscountValue_calc()//计算第二阶段自由现金流贴现值
   {
     if (wacc <= secondStageGrowthRate)
     {
@@ -81,7 +83,7 @@ class Computaiton{
     return secondStageFreeCashFlowDiscountValue;
   }
 
-  double freeCashFlowPresentValue_calc()//计算自由现金流现值
+  static double freeCashFlowPresentValue_calc()//计算自由现金流现值
   {
     firstStageFreeCashFlowDiscountValue_calc();
     secondStageFreeCashFlowDiscountValue_calc();
@@ -89,21 +91,21 @@ class Computaiton{
     return freeCashFlowPresentValue;
   }
 
-  double companyValue_calc() //计算公司价值
+  static double companyValue_calc() //计算公司价值
   {
     freeCashFlowPresentValue_calc();
     companyValue = monetaryAssets + longTermEquityInvestment + freeCashFlowPresentValue;
     return companyValue;
   }
 
-  double equityValue_calc()
+  static double equityValue_calc()
   {
     companyValue_calc();
     equityValue = companyValue - debtCapital;
     return equityValue;
   }
 
-  double stockPrice_calc() //计算股票价值，直接调用这个函数即可
+  static double stockPrice_calc() //计算股票价值，直接调用这个函数即可
   {
     equityValue_calc();
     stockPrice = equityValue * (1 - minorityShareholderRatio)/ totalShareCapital;

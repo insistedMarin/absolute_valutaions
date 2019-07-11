@@ -8,31 +8,29 @@ class  LTdebtCapital{
   double incomeTax; //所得税
   double totalProfit; //利润总额
 
-  void getLTloan(String a,String b,String c,String d,String e,String f){
+  bool getLTloan(String a,String b,String c,String d,String e,String f){
+    if(a.length * b.length * c.length * d.length * e.length * f.length == 0 )
+    {
+      return false;
+    }
     longTimeLoan=double.parse(a);
     bondsPayable=double.parse(b);
     longTimePayable=double.parse(c);
     interestExpense=double.parse(d);
     incomeTax=double.parse(e);
     totalProfit=double.parse(f);
+    return true;
   }
-  bool isNonZero()
-  {
-    if( longTimeLoan*bondsPayable*longTimePayable*interestExpense*incomeTax*totalProfit  != 0)
-    {
-      return true;
-    }
-    return false;
+
+  void LTdebtCapital_Trans(){
+    Computaiton.interestExpense = interestExpense;
   }
 
   void LTdebtCapital_Calc(){
+    LTdebtCapital_Trans();
     Computaiton.LTDCaptial= longTimeLoan + bondsPayable + longTimePayable;
-  }
-  void incomeTaxRate_Calc(){
     Computaiton.incomeTaxRate = incomeTax/totalProfit;
   }
 
-  void interestExpense_Trans(){
-    Computaiton.interestExpense = interestExpense;
-  }
+
 }
