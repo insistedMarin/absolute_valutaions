@@ -10,6 +10,8 @@ class _growthrateState extends State<growthrate>{
   TextEditingController _firstPartGrowthRate =new TextEditingController();
   TextEditingController _secondPartGrowthRate =new TextEditingController();
   TextEditingController _StockAddress =new TextEditingController();
+  TextEditingController _equityCapitalCost =new TextEditingController();
+
 
 
   final _formkey=new GlobalKey<FormState>();
@@ -82,6 +84,18 @@ class _growthrateState extends State<growthrate>{
                                   .length>0?null:"输入不能为空";
                             },
                           ),
+                          TextFormField(
+//                            autofocus: true,
+                            controller: _equityCapitalCost,
+                            decoration: InputDecoration(
+                              labelText: "股权资本成本率",
+                              icon: Icon(Icons.stars),
+                            ),
+                            validator: (v){
+                              return v.trim()
+                                  .length>0?null:"输入不能为空";
+                            },
+                          ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 28.0,vertical: 35.0),
                             child: Row(
@@ -105,14 +119,14 @@ class _growthrateState extends State<growthrate>{
                                 Expanded(
                                   child: RaisedButton(
                                     padding: EdgeInsets.all(10.0),
-                                    child: Text("提交",style: TextStyle(
+                                    child: Text("完成",style: TextStyle(
                                       fontSize: 25.0,
                                       fontFamily: "ZHONG1",
                                     ),),
                                     color: Theme.of(context).primaryColor,
                                     textColor: Colors.white,
                                     onPressed: (){
-                                      Navigator.pushNamed(context, "bottombar_page");
+                                      Navigator.pushNamed(context, "show_page");
                                     },
                                   ),
                                   flex: 5,

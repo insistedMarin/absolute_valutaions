@@ -7,7 +7,7 @@ import 'package:managementdemo/Pages/login_page.dart';
 import 'package:managementdemo/Pages/freecashflow_page.dart';
 import 'package:managementdemo/Pages/financialasset_page.dart';
 import 'package:managementdemo/Pages/growthrate_page.dart';
-
+import 'package:managementdemo/Pages/show_page.dart';
 //import 'dart:async';
 
 void main() => runApp(MyApp());
@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
                 'bottombar_page':(context)=>MyHomePage(),
                 'freecashflow_page':(context)=>FreeCaF(),
                 'financialasset_page':(context)=>finAsset(),
-                'growthrate_page':(context)=>growthrate()},
+                'growthrate_page':(context)=>growthrate(),
+                'show_page':(context)=>showresult()},
     );
   }
 }
