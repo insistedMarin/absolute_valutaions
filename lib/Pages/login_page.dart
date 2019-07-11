@@ -84,7 +84,7 @@ class _LoginState extends State<Login> {
                                       print(_key.text);
                                     }
 
-                                    FCF.calculate();
+                                    //FCF.calculate();
                                     Navigator.pushNamed(context, 'bottombar_page');
                                   })
                           ),

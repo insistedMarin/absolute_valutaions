@@ -17,7 +17,7 @@ class _STLoanState extends State<STLoan> {
   TextEditingController _NonCurrentLiabilitiesWithinYear=new TextEditingController();
 
   final _formkey=new GlobalKey<FormState>();
-  STdebtCapital_calc STDCaptial=new STdebtCapital_calc();
+  STdebtCapital STDCaptial=new STdebtCapital();
   void reset(){
     _formkey.currentState.reset();
   }
